@@ -422,6 +422,10 @@ footer a{color:var(--brand);font-weight:600;text-decoration:none}
 .fb-input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
 textarea.fb-input{min-height:140px;resize:vertical}
 .fb-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.pro-group{display:flex;flex-direction:column;gap:8px}
+.pro-title{font:700 12px var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--brand);margin-top:4px}
+.opt input:disabled + span{opacity:.4;cursor:not-allowed}
+#pro-count{font-family:var(--font-mono);color:var(--fg)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .fb-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .fb-actions .btn{border-radius:999px;cursor:pointer}
@@ -498,15 +502,33 @@ textarea.fb-input{min-height:140px;resize:vertical}
             <div class="score-scale"><span><span class="l-es">Nada</span><span class="l-en" lang="en">Not at all</span></span><span><span class="l-es">Me encanta</span><span class="l-en" lang="en">Love it</span></span></div>
           </fieldset>
 
-          <fieldset class="fb-field">
-            <legend class="fb-label"><span class="l-es">¿Qué te gustaría que tenga una versión Pro?</span><span class="l-en" lang="en">What would you like in a Pro version?</span> <span class="fb-hint"><span class="l-es">Podés elegir varias</span><span class="l-en" lang="en">Pick as many as you like</span></span></legend>
-            <div class="opts">
-              <label class="opt"><input type="checkbox" name="pro" value="Torneos y match play con amigos"><span><span class="l-es">Torneos y match play con amigos del club</span><span class="l-en" lang="en">Tournaments and match play with clubmates</span></span></label>
-              <label class="opt"><input type="checkbox" name="pro" value="Tiradas por equipo y mixto"><span><span class="l-es">Tiradas por equipo y mixto</span><span class="l-en" lang="en">Team and mixed team rounds</span></span></label>
-              <label class="opt"><input type="checkbox" name="pro" value="Módulo para entrenadores"><span><span class="l-es">Planes de mi entrenador</span><span class="l-en" lang="en">Plans from my coach</span></span></label>
-              <label class="opt"><input type="checkbox" name="pro" value="Sincronización en la nube"><span><span class="l-es">Mis datos en la nube, en todos mis dispositivos</span><span class="l-en" lang="en">My data in the cloud, on all my devices</span></span></label>
-              <label class="opt"><input type="checkbox" name="pro" value="Funciones con IA"><span><span class="l-es">Funciones con IA</span><span class="l-en" lang="en">AI features</span></span></label>
-            </div>
+          <fieldset class="fb-field" id="pro-field">
+            <legend class="fb-label"><span class="l-es">¿Qué te gustaría que tenga una versión Pro?</span><span class="l-en" lang="en">What would you like in a Pro version?</span> <span class="fb-hint"><span class="l-es">Elegí hasta 5</span><span class="l-en" lang="en">Pick up to 5</span> · <span id="pro-count">0</span>/5</span></legend>
+            <div class="pro-group"><div class="pro-title"><span class="l-es">Competir online</span><span class="l-en" lang="en">Compete online</span></div><div class="opts">
+              <label class="opt"><input type="checkbox" name="pro" value="Match play online"><span><span class="l-es">Match play 1 vs 1 contra otro arquero, del mismo club o de otro</span><span class="l-en" lang="en">1-on-1 match play against another archer, from your club or anywhere</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="Torneos amistosos online"><span><span class="l-es">Torneos amistosos online, con clasificación y eliminatorias</span><span class="l-en" lang="en">Friendly online tournaments, with ranking round and eliminations</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="Torneos por equipos"><span><span class="l-es">Torneos por equipos (3 arqueros)</span><span class="l-en" lang="en">Team tournaments (3 archers)</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="Torneos equipo mixto"><span><span class="l-es">Torneos de equipo mixto</span><span class="l-en" lang="en">Mixed team tournaments</span></span></label>
+            </div></div>
+            <div class="pro-group"><div class="pro-title"><span class="l-es">Entrenador</span><span class="l-en" lang="en">Coach</span></div><div class="opts">
+              <label class="opt"><input type="checkbox" name="pro" value="Entrenador ve mis sesiones"><span><span class="l-es">Que tu entrenador vea tus sesiones y resultados</span><span class="l-en" lang="en">Your coach can see your sessions and results</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="Plan del entrenador"><span><span class="l-es">Recibir un plan de entrenamiento de tu entrenador en la app</span><span class="l-en" lang="en">Get a training plan from your coach in the app</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="Panel para entrenadores"><span><span class="l-es">Panel para entrenadores, con seguimiento de todos sus alumnos</span><span class="l-en" lang="en">Coach dashboard to follow all their archers</span></span></label>
+            </div></div>
+            <div class="pro-group"><div class="pro-title"><span class="l-es">Entrenamiento ampliado</span><span class="l-en" lang="en">More training</span></div><div class="opts">
+              <label class="opt"><input type="checkbox" name="pro" value="Entrenamiento físico"><span><span class="l-es">Registrar entrenamiento físico</span><span class="l-en" lang="en">Log physical training</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="Entrenamiento mental"><span><span class="l-es">Registrar entrenamiento mental (visualización, respiración, rutina)</span><span class="l-en" lang="en">Log mental training (visualization, breathing, routine)</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="Técnica sin puntaje"><span><span class="l-es">Registrar técnica sin puntaje (paca, elástico)</span><span class="l-en" lang="en">Log technique work without scoring (blank bale, stretch band)</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="Cómo me sentí"><span><span class="l-es">Anotar cómo te sentiste en cada sesión</span><span class="l-en" lang="en">Note how you felt in each session</span></span></label>
+            </div></div>
+            <div class="pro-group"><div class="pro-title"><span class="l-es">Inteligencia artificial</span><span class="l-en" lang="en">Artificial intelligence</span></div><div class="opts">
+              <label class="opt"><input type="checkbox" name="pro" value="IA análisis de sesiones"><span><span class="l-es">Análisis automático de tus sesiones</span><span class="l-en" lang="en">Automatic analysis of your sessions</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="IA resumen de evolución"><span><span class="l-es">Resumen de tu evolución por semana o mes</span><span class="l-en" lang="en">Weekly or monthly progress summary</span></span></label>
+              <label class="opt"><input type="checkbox" name="pro" value="IA puntaje con foto"><span><span class="l-es">Cargar el puntaje con una foto del blanco</span><span class="l-en" lang="en">Score your arrows from a photo of the target</span></span></label>
+            </div></div>
+            <div class="pro-group"><div class="pro-title"><span class="l-es">Tus datos</span><span class="l-en" lang="en">Your data</span></div><div class="opts">
+              <label class="opt"><input type="checkbox" name="pro" value="Sincronización en la nube"><span><span class="l-es">Tus datos en la nube, en todos tus dispositivos</span><span class="l-en" lang="en">Your data in the cloud, on all your devices</span></span></label>
+            </div></div>
           </fieldset>
 
           <fieldset class="fb-field">
@@ -574,6 +596,10 @@ textarea.fb-input{min-height:140px;resize:vertical}
     tabs.forEach(function(o){var on=open&&o===t;o.setAttribute('aria-selected',on?'true':'false');o.setAttribute('aria-expanded',on?'true':'false');document.getElementById(o.getAttribute('aria-controls')).hidden=!on;});
   });});
 
+  var proBoxes=[].slice.call(document.querySelectorAll('#pro-field input[name="pro"]'));
+  function proLimit(){var n=proBoxes.filter(function(x){return x.checked}).length;document.getElementById('pro-count').textContent=n;proBoxes.forEach(function(x){x.disabled=!x.checked&&n>=5;});}
+  proBoxes.forEach(function(x){x.addEventListener('change',proLimit);});
+  document.getElementById('form-encuesta').addEventListener('reset',function(){setTimeout(proLimit,0);});
   function lang(){return document.documentElement.getAttribute('data-lang')==='en'?'en':'es';}
   var MSG={
     sending:{es:'Enviando…',en:'Sending…'},
